@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Auth from './Auth';
+import Init from './Init';
 import {useUser} from 'reactfire';
 
 import {
@@ -14,7 +14,8 @@ function App() {
   return (
     <div className="App">
     { user && <p>Usuario: {user.email}</p>}
-     <Auth />
+     <Init />
+     
     </div>
   );
 }

@@ -1,18 +1,15 @@
 import React, {useState} from 'react';
 import 'firebase/auth';
 import {useFirebaseApp, useUser} from 'reactfire';
+import "./Auth.css";
 
 export default (props) => {
+    
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const firebase = useFirebaseApp();
     const user = useUser();
-
-    const submit = async ()=>{
-        console.log(email,password);
-        await firebase.auth().createUserWithEmailAndPassword(email,password);
-    }
 
     const login = async ()=>{
         console.log(email,password);
@@ -25,16 +22,22 @@ export default (props) => {
 
     return(
         <div>
-            
+            <img src="\Images\LogoPongui.jpg" alt=""/>
+            <div className="banner">
+               Clínica de fisioterapia
+            </div>
+           
             {
              !user &&
              <div>
-                 <label htmlFor="email">Correo electrónico</label>
-                 <input type="email" id="email" onChange={(ev)=> setEmail(ev.target.value)}/>
-                  <label htmlFor="email">Contraseña</label>
-                 <input type="password" id="password" onChange={(ev)=> setPassword(ev.target.value)}/>
-                 <button onClick={submit}>Registrar cuenta nueva</button>
-                 <button onClick={login}>Iniciar sesión</button>
+                 
+                 <input type="email" id="email" placeholder="Correo electrónico" onChange={(ev)=> setEmail(ev.target.value)}/>
+                  
+                 <input type="password" id="password" placeholder="Contraseña" onChange={(ev)=> setPassword(ev.target.value)}/>
+
+                 <div id="a">
+                    <button onClick={login}>Iniciar sesión</button>
+                 </div>
              </div>
             }
             {

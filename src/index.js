@@ -2,6 +2,7 @@ import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Start from './Start';
 import * as serviceWorker from './serviceWorker';
 import firebaseConfig from './firebase-config';
 import {
@@ -11,7 +12,7 @@ import {
 ReactDOM.render((
   <FirebaseAppProvider firebaseConfig={firebaseConfig}>
     <Suspense fallback={'Conectando a firebase...'}>
-      <App />
+      <Start />
     </Suspense>
   </FirebaseAppProvider>
     ), document.getElementById('root')
