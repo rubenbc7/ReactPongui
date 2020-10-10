@@ -29,6 +29,7 @@ export default (props) => {
 
     const logout = async()=>{
        console.log("Cerrar sesion");
+       await  firebase.auth().signOut();
     }
 
     return(
