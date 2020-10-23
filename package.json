@@ -9,6 +9,7 @@
     "firebase": "^7.22.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-qr-scanner": "0.0.10",
     "react-scripts": "3.4.3",
     "reactfire": "^2.0.0-alpha.3"
   },
