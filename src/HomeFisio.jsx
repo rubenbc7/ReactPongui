@@ -29,7 +29,7 @@ export default (props) => {
     return(
         <div>
             <div className="banner">
-               Bienvenido Ing.Biomédico
+               Bienvenido Fisioterapeuta
             </div>
            
                 <button onClick={logout}>Cerrar sesión</button>
