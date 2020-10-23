@@ -35,6 +35,7 @@ class App extends Component {
     this.setState({
       result: data,
     })
+    console.log(data);
   }
   handleError(err){
     console.error(err)
