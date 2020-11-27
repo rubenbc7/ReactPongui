@@ -32,9 +32,23 @@ class App extends Component {
  }
 
   handleScan(data){
-    this.setState({
-      result: data,
-    })
+    if(data !== null){
+      this.setState({
+        delay:100000000,
+        result: data,
+      })
+
+      
+    }
+    if(data === null){
+      this.setState({
+        delay:100,
+        result: data,
+      })
+
+    }
+    
+   
     console.log(data);
   }
   handleError(err){
