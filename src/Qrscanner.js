@@ -3,11 +3,34 @@ import ReactDOM from 'react-dom';
 import QrReader from 'react-qr-scanner'
 import firebaseConfig from './firebase-config';
 import HomeFisio from './HomeFisio';
+import {db, auth} from './firestore-config'
 import {
    FirebaseAppProvider
 }from 'reactfire'
  
 class App extends Component {
+    //firestore
+    state = {
+      Inventario:null
+       }
+
+ /* componentDidMount(){
+      console.log('aaa')
+      db.collection('Inventario').doc("f2Yz3bGg7KJrpsI9qdM5")
+        .get()
+        .then(snap => {
+            const Inventario = []
+            
+                const data = snap.data()
+                Inventario.push(data)
+            
+            this.setState({Inventario: Inventario})
+            console.log(snap)
+        })
+        .catch(error => console.log(error))
+   }
+
+    //firestore */
   constructor(props){
     super(props)
     this.state = {
@@ -38,6 +61,19 @@ class App extends Component {
         result: data,
       })
 
+      console.log('aaa')
+      db.collection('Inventario').doc(data)
+        .get()
+        .then(snap => {
+            const Inventario = []
+            
+                const data = snap.data()
+                Inventario.push(data)
+            
+            this.setState({Inventario: Inventario})
+            console.log(snap)
+        })
+        .catch(error => console.log(error))
       
     }
     if(data === null){
@@ -70,6 +106,26 @@ class App extends Component {
           />
         <p>{this.state.result}</p>
         <button onClick={this.Back}>Atrás</button>
+
+        <div className="App">
+              <h1>Especificaciones del equipo médico</h1>
+              {
+                  this.state.Inventario &&
+                  this.state.Inventario.map( Inventario => {
+                      return(
+                          <div>
+                              <p>{Inventario.EQUIPO}</p>
+                              <p>{Inventario.MODELO}</p>
+                              <p>{Inventario.MARCA}</p>
+                          </div>
+
+                      )
+                  })
+                
+              }
+              
+            </div>
+
       </div>
     )
   }

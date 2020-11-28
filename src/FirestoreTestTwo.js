@@ -16,23 +16,52 @@ docRef.get().then(function(doc) {
     console.log("Error getting document:", error);
 });
 
-/*var ref = firebase.database().ref("Inventario/f2Yz3bGg7KJrpsI9qdM5");
-ref.once("value")
-  .then(function(snapshot) {
-    var name = snapshot.child("f2Yz3bGg7KJrpsI9qdM5").val(); // {first:"Ada",last:"Lovelace"}
-    //var firstName = snapshot.child("name/first").val(); // "Ada"
-    //var lastName = snapshot.child("name").child("last").val(); // "Lovelace"
-    var age = snapshot.child("AREA").val(); // null
-    console.log(age);
-  });*/
-
 class App extends React.Component{
-    
+    state = {
+        Inventario:null
+    }
+
+    componentDidMount(){
+        console.log('aaa')
+        db.collection('Inventario').doc("f2Yz3bGg7KJrpsI9qdM5")
+          .get()
+          .then(snap => {
+              const Inventario = []
+              
+                  const data = snap.data()
+                  Inventario.push(data)
+              
+              this.setState({Inventario: Inventario})
+              console.log(snap)
+          })
+          .catch(error => console.log(error))
+    }
+
+    /*.then(function(docRef) {
+        db.collection("cities").doc(docRef.id).get()
+          .then(snap => {
+             console.log('Here is the document you wrote to', snap.data()
+           })
+     })*/
     
     render(){
         return(
             <div className="App">
               <h1>Especificaciones del equipo médico</h1>
+              {
+                  this.state.Inventario &&
+                  this.state.Inventario.map( Inventario => {
+                      return(
+                          <div>
+                              <p>{Inventario.EQUIPO}</p>
+                              <p>{Inventario.MODELO}</p>
+                              <p>{Inventario.MARCA}</p>
+                          </div>
+
+                      )
+                  })
+                
+              }
               
             </div>
         )

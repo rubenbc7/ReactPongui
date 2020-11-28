@@ -18,6 +18,7 @@ class App extends React.Component{
     state = {
         Inventario:null
     }
+    
 
     componentDidMount(){
         console.log('aaa')

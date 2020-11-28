@@ -14,7 +14,7 @@ import {
 ReactDOM.render((
   <FirebaseAppProvider firebaseConfig={firebaseConfig}>
     <Suspense fallback={'Conectando a firebase...'}>
-      <FirestoreTest />
+      <Qrscanner />
     </Suspense>
   </FirebaseAppProvider>
     ), document.getElementById('root')
