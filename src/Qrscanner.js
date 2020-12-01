@@ -114,9 +114,24 @@ class App extends Component {
                   this.state.Inventario.map( Inventario => {
                       return(
                           <div>
-                              <p>{Inventario.EQUIPO}</p>
-                              <p>{Inventario.MODELO}</p>
-                              <p>{Inventario.MARCA}</p>
+                              <p>Área: {Inventario.AREA}</p>
+                              <p>Días transcurridos:{Inventario.DIASTRANSCURRIDOS}</p>
+                              <p>Equipo: {Inventario.EQUIPO}</p>
+                              <p>Especialista responsable de MP:{Inventario.ESPECIALISTARESPONSABLEMP}</p>
+                              <p>Estado: {Inventario.ESTADO}</p>
+                              <p>Frecuencia anual de MP: {Inventario.FRECUENCIAANUALDEMP}</p>
+                              <p>Función del equipo: {Inventario.FUNCIONDELEQUIPO}</p>
+                              <p>IMP: {Inventario.IMP}</p>
+                              <p>Inventario: {Inventario.INVENTARIO}</p>
+                              <p>Mantenimiento: {Inventario.MANTENIMIENTO}</p>
+                              <p>Marca: {Inventario.MARCA}</p>
+                              <p>Modelo: {Inventario.MODELO}</p>
+                              <p>PI: {Inventario.PI}</p>
+                              <p>Próximo MP: {Inventario.PROXIMOMP}</p>
+                              <p>Riesgos asociados: {Inventario.RIESGOSASOCIADOS}</p>
+                              <p>Serie: {Inventario.SERIE}</p>
+                              <p>Tiempo estándar MP por hora: {Inventario.TIEMPOESTANDARMPPORHORA}</p>
+                              <p>Último MP:{Inventario.ULTIMOMP}</p>
                           </div>
 
                       )
