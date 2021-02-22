@@ -2,6 +2,9 @@ import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Start from './Start';
+import FirestoreTest from './FirestoreTest';
+import FirestoreTestTwo from './FirestoreTestTwo';
+import Qrscanner from './Qrscanner';
 import * as serviceWorker from './serviceWorker';
 import firebaseConfig from './firebase-config';
 import {
