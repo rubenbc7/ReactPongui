@@ -6,6 +6,7 @@ import {useUser} from 'reactfire';
 import {
   useFirebaseApp
 } from 'reactfire'
+import HomeFisio from './HomeFisio';
 
 function App() {
   const firebase = useFirebaseApp();
@@ -15,7 +16,7 @@ function App() {
   return (
     <div className="App">
     { user && <p>Usuario: {user.email}</p>}
-     <Init />
+     <HomeFisio />
      
     </div>
   );

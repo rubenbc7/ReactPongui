@@ -40,16 +40,16 @@ export default (props) => {
             )
         );
       
-  }
+     }
 
     return(
         <div>
             <div className="banner">
-               Bienvenido Fisioterapeuta
+               Bienvenido Fisioterapeutaxd
             </div>
                 <button onClick={ScanQr}>Escanear Código QR</button>
                 <button onClick={logout}>Cerrar sesión</button>
-            
+
         </div>
     )
 }

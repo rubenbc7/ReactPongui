@@ -7,7 +7,7 @@ import {db, auth} from './firestore-config'
 import {
    FirebaseAppProvider
 }from 'reactfire'
- 
+var a = 1;
 class App extends Component {
     //firestore
     state = {
@@ -37,11 +37,33 @@ class App extends Component {
       delay: 100,
       result: 'No result',
     }
- 
+
     this.handleScan = this.handleScan.bind(this)
   }
 
+  OrdenShow = async()=>{
+    console.log("Boton de Orden");
+      document.getElementById("BotonOrden").style.display="none";
+      document.getElementById("TextoOrden").style.display="inline";
+      document.getElementById("BotonEnviar").style.display="inline";
+
+  }
+
+  EnviarOrden = async()=>{
+    console.log("orden enviada");
+    db.collection('OrdenDeMantenimiento').add({
+      ORDEN : this.state.name
+    })
+  }
+
+  onInputChange = event =>{
+    const name = event.target.name;
+    const value = event.target.value;
+    this.setState({[name]:  value });
+  };
+  
   Back = async()=>{
+    a = 1;
     return (
      ReactDOM.render((
          <FirebaseAppProvider firebaseConfig={firebaseConfig}>
@@ -55,11 +77,21 @@ class App extends Component {
  }
 
   handleScan(data){
+    
+    if(a ===1){
+      document.getElementById("BotonOrden").style.display="none";
+      document.getElementById("TextoOrden").style.display="none";
+      document.getElementById("BotonEnviar").style.display="none";
+      a = a + 1;
+    }
+
     if(data !== null){
       this.setState({
         delay:100000000,
         result: data,
       })
+
+      document.getElementById("BotonOrden").style.display="inline";
 
       console.log('aaa')
       db.collection('Inventario').doc(data)
@@ -77,6 +109,7 @@ class App extends Component {
       
     }
     if(data === null){
+
       this.setState({
         delay:100,
         result: data,
@@ -106,6 +139,10 @@ class App extends Component {
           />
         <p>{this.state.result}</p>
         <button onClick={this.Back}>Atrás</button>
+        <button id="BotonOrden" onClick={this.OrdenShow}>Orden de Mantenimiento</button>
+        <input name="name" type="text" id="TextoOrden" placeholder="Escriba la orden de mantenimiento" value={this.state.name} onChange={this.onInputChange}></input>
+        <button id="BotonEnviar" onClick={this.EnviarOrden}>Enviar Orden</button>
+      
 
         <div className="App">
               <h1>Especificaciones del equipo médico</h1>
